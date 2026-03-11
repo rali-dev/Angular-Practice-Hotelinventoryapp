@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Room, RoomList } from './rooms.interface';
-import { NgIf, NgFor, NgClass, NgStyle } from '@angular/common';
+import { NgIf, NgFor, NgClass, NgStyle, DatePipe, PercentPipe, CurrencyPipe, TitleCasePipe, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'hinv-rooms',
-  imports: [NgIf, NgFor, NgClass, NgStyle],
+  imports: [NgIf, NgFor, NgClass, NgStyle, DatePipe, PercentPipe, CurrencyPipe, TitleCasePipe, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe],
   templateUrl: './rooms.html',
   styleUrl: './rooms.scss',
 })
@@ -28,6 +28,7 @@ export class Rooms {
     photos: 'https://example.com/deluxe-room.jpg',
     checkinTime: new Date('2024-07-01T14:00:00'),
     checkoutTime: new Date('2024-07-02T12:00:00'),
+    rating: 4.5
   }, {
     roomNumber: 2,
     roomType: 'Suite',
@@ -36,6 +37,7 @@ export class Rooms {
     photos: 'https://example.com/suite.jpg',
     checkinTime: new Date('2024-07-01T14:00:00'),
     checkoutTime: new Date('2024-07-02T12:00:00'),
+    rating: 4.897
   }, {
     roomNumber: 3,
     roomType: 'Standard Room',
@@ -44,6 +46,7 @@ export class Rooms {
     photos: 'https://example.com/standard-room.jpg',
     checkinTime: new Date('2024-07-01T14:00:00'),
     checkoutTime: new Date('2024-07-02T12:00:00'),
+    rating: 4.2
   }];
 
 

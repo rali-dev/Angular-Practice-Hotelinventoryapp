@@ -21,6 +21,9 @@
 
 {{ (rooms.availableRooms ?? 0) > 0 ? rooms.availableRooms : 'No Rooms Available' }}
 
+<!-- {{ roomList | json}} -->
+<!-- is used for debugging purposes -->
+
 <div *ngIf="(rooms.availableRooms ?? 0) > 0">
   Rooms List:
   <table>
@@ -33,17 +36,19 @@
       <th>Price</th>
       <th>Check-in Time</th>
       <th>Check-out Time</th>
+      <th>Rating</th>
     </tr>
 
-    <tr *ngFor="let room of roomList; let e = even; let o = odd; let i = index" [ngClass]="e ? 'even' : 'odd'">
-      <td>{{ i + 1 }}</td>
+    <tr *ngFor="let room of roomList | slice : 0:3; let e = even; let o = odd; let i = index" [ngClass]="e ? 'even' : 'odd'">
+      <td>{{ i + 1 | percent }}</td>
       <td>{{ e ? 'Even' : 'Odd' }}</td>
       <td>{{ room.roomNumber }}</td>
-      <td>{{ room.roomType }}</td>
-      <td>{{ room.amenities }}</td>
-      <td>{{ room.price }}</td>
-      <td>{{ room.checkinTime}}</td>
-      <td>{{ room.checkoutTime}}</td>
+      <td>{{ room.roomType | titlecase }}</td>
+      <td>{{ room.amenities | uppercase }}</td>
+      <td>{{ room.price | currency: 'GBP' }}</td>
+      <td>{{ room.checkinTime | date:'short'}}</td>
+      <td>{{ room.checkoutTime | date:'short'}}</td>
+      <td>{{ room.rating | number:'1.2-3' : 'en-us' }}</td>
     </tr>
   </table>
 </div>
