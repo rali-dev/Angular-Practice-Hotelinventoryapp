@@ -1,12 +1,23 @@
+
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { Rooms } from './rooms/rooms';
+import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'hinv-root',
+  imports: [RouterOutlet, Rooms, NgSwitch, NgSwitchCase, NgSwitchDefault],
   templateUrl: './app.html',
+  // template: `<h1>hello World :)</h1>
+  // <p>Angular is ausome!</p>`,
   styleUrl: './app.scss'
+  // styles: `
+  //   h1 {
+  //     color: blue;
+  //   }
+  // `
 })
 export class App {
   protected readonly title = signal('hotelinventoryapp');
+
+  // role: string = 'admin';
 }
