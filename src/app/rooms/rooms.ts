@@ -1,16 +1,17 @@
-import { Component, DoCheck, OnInit,  } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms.interface';
-import {  JsonPipe, NgIf,NgStyle} from '@angular/common';
+import { JsonPipe, NgIf, NgStyle } from '@angular/common';
 import { RoomsList } from './rooms-list/rooms-list';
+import { Header } from "../header/header";
 
 @Component({
   selector: 'hinv-rooms',
-  imports: [NgIf, NgStyle, RoomsList, JsonPipe],
+  imports: [NgIf, NgStyle, RoomsList, JsonPipe, Header],
   templateUrl: './rooms.html',
   styleUrl: './rooms.scss',
 })
 
-export class Rooms implements OnInit, DoCheck {
+export class Rooms implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
 
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
@@ -25,15 +26,18 @@ export class Rooms implements OnInit, DoCheck {
   roomList: RoomList[] = [];
   selectedRoom!: RoomList;
   title = 'Room List';
+
+  // @ViewChild(Header, { static: true }) headerComponent!: Header; 
+  @ViewChild(Header) headerComponent!: Header;
+
   constructor() {
-  }
-  
-  ngDoCheck(): void {
-    // throw new Error('Method not implemented.');
-    console.log('on changes is called');
+
   }
 
   ngOnInit(): void {
+
+    // console.log(this.headerComponent);
+
     this.roomList = [{
       roomNumber: 1,
       roomType: 'Deluxe Room',
@@ -64,18 +68,33 @@ export class Rooms implements OnInit, DoCheck {
     }];
   }
 
+  ngDoCheck(): void {
+    console.log('on changes is called');
+  }
+
+  ngAfterViewInit(): void {
+    // console.log(this.headerComponent);
+    this.headerComponent.title = 'Rooms View';
+  }
+
+  ngAfterViewChecked(): void {
+    this.headerComponent.title = 'Rooms View';
+
+  }
+
+
   toggle() {
     this.hideRooms = !this.hideRooms;
     this.title = 'Rooms List';
   }
-  
-  selectRoom(room: RoomList){
+
+  selectRoom(room: RoomList) {
     this.selectedRoom = room;
   }
 
-  addRoom(){
+  addRoom() {
     const room: RoomList = {
-      roomNumber: 4, 
+      roomNumber: 4,
       roomType: 'Deluxe Room',
       amenities: 'Air Conditioning, Free Wi-Fi, Flat-screen TV',
       price: 150,

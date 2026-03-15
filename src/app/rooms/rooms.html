@@ -1,14 +1,5 @@
-<p>welcome to {{ hotelName }}</p>
-<!-- <p>Number of rooms: {{ numberOfRooms }}</p> -->
-
-<!-- Number of rooms: 
-<div [innerText]="numberOfRooms"></div> -->
-
-<!-- property binding example:  -->
-<!-- box syntax: [property]="expression" -->
-<!-- angular will set the innerText property of the div element to the value of numberOfRooms variable. -->
-<!-- it allows us to use native HTML properties and bind them to our component's data. -->
-<!-- document.getElementById('roomCount').innerText = numberOfRooms; -->
+<!-- <p>welcome to {{ hotelName }}</p> -->
+ <hinv-header></hinv-header>
 
 <div [hidden]="hideRooms">
   Number of rooms:
@@ -22,8 +13,6 @@
 
 {{ (rooms.availableRooms ?? 0) > 0 ? rooms.availableRooms : 'No Rooms Available' }}
 
-<!-- {{ roomList | json}} -->
-<!-- is used for debugging purposes -->
 <br>
 <button (click)="addRoom()">
     Add Room 
@@ -39,9 +28,3 @@
 </div>
 
 <button (click)="toggle()">Toggle Rooms</button>
-
-<!-- event binding : what is it?
-event binding is a way to listen to user interactions and respond to them in our component.
-it allows us to bind a method in our component to an event that occurs in the template.
-for example, we can bind a click event to a button and call a method in our component when the button is clicked.
-the syntax for event binding is: (event)="method()" -->

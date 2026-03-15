@@ -1,10 +1,10 @@
-import { CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, NgClass, NgFor, PercentPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, DecimalPipe, NgClass, NgFor, PercentPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { RoomList } from '../rooms.interface';
 
 @Component({
   selector: 'hinv-rooms-list',
-  imports: [NgFor, NgClass,DatePipe, PercentPipe, CurrencyPipe, TitleCasePipe, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe],
+  imports: [NgFor, NgClass,DatePipe, PercentPipe, CurrencyPipe, TitleCasePipe, UpperCasePipe, DecimalPipe],
   templateUrl: './rooms-list.html',
   styleUrl: './rooms-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
