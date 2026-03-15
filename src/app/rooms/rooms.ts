@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit,  } from '@angular/core';
 import { Room, RoomList } from './rooms.interface';
 import {  JsonPipe, NgIf,NgStyle} from '@angular/common';
 import { RoomsList } from './rooms-list/rooms-list';
@@ -10,7 +10,7 @@ import { RoomsList } from './rooms-list/rooms-list';
   styleUrl: './rooms.scss',
 })
 
-export class Rooms implements OnInit {
+export class Rooms implements OnInit, DoCheck {
 
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
@@ -26,6 +26,11 @@ export class Rooms implements OnInit {
   selectedRoom!: RoomList;
   title = 'Room List';
   constructor() {
+  }
+  
+  ngDoCheck(): void {
+    // throw new Error('Method not implemented.');
+    console.log('on changes is called');
   }
 
   ngOnInit(): void {
