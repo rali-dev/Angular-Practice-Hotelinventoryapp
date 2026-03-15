@@ -1,4 +1,4 @@
-Rooms List:
+<h2>{{ title }}</h2>
   <table class="table table-bordered">
     <tr>
       <th>Index</th>
@@ -13,7 +13,7 @@ Rooms List:
       <th>Selected Room</th>
     </tr>
 
-    <tr *ngFor="let room of rooms | slice : 0:3; let e = even; let o = odd; let i = index" [ngClass]="e ? 'even' : 'odd'">
+    <tr *ngFor="let room of rooms; let e = even; let o = odd; let i = index" [ngClass]="e ? 'even' : 'odd'">
       <td>{{ i + 1 | percent }}</td>
       <td>{{ e ? 'Even' : 'Odd' }}</td>
       <td>{{ room.roomNumber }}</td>

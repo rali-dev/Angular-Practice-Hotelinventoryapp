@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Room, RoomList } from './rooms.interface';
 import {  JsonPipe, NgIf,NgStyle} from '@angular/common';
 import { RoomsList } from './rooms-list/rooms-list';
@@ -25,6 +24,7 @@ export class Rooms implements OnInit {
 
   roomList: RoomList[] = [];
   selectedRoom!: RoomList;
+  title = 'Room List';
   constructor() {
   }
 
@@ -61,9 +61,24 @@ export class Rooms implements OnInit {
 
   toggle() {
     this.hideRooms = !this.hideRooms;
+    this.title = 'Rooms List';
   }
   
   selectRoom(room: RoomList){
     this.selectedRoom = room;
+  }
+
+  addRoom(){
+    const room: RoomList = {
+      roomNumber: 4, 
+      roomType: 'Deluxe Room',
+      amenities: 'Air Conditioning, Free Wi-Fi, Flat-screen TV',
+      price: 150,
+      photos: 'https://example.com/deluxe-room.jpg',
+      checkinTime: new Date('2024-07-01T14:00:00'),
+      checkoutTime: new Date('2024-07-02T12:00:00'),
+      rating: 4.5
+    }
+    this.roomList = [...this.roomList, room];
   }
 }

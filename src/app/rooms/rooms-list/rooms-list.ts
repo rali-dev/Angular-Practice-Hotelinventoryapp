@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe, DecimalPipe, JsonPipe, NgClass, NgFor, PercentPipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { RoomList } from '../rooms.interface';
 
 @Component({
@@ -7,12 +7,22 @@ import { RoomList } from '../rooms.interface';
   imports: [NgFor, NgClass,DatePipe, PercentPipe, CurrencyPipe, TitleCasePipe, UpperCasePipe, JsonPipe, SlicePipe, DecimalPipe],
   templateUrl: './rooms-list.html',
   styleUrl: './rooms-list.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsList {
+export class RoomsList implements OnChanges {
   @Input() rooms: RoomList[] = [];
+  @Input() title: string = '';
   @Output() selectedRoom = new EventEmitter<RoomList>();
 
   selectRoom(room: RoomList){
     this.selectedRoom.emit(room);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // Handle changes to input properties if needed
+    console.log(changes)
+    if(changes['title']){
+      this.title = changes['title'].currentValue.toUpperCase();
+    }
   }
 }
