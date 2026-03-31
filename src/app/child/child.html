@@ -1,0 +1,6 @@
+<div class="child">
+   <label>Child Component</label><br>
+   <input type="text" placeholder="send message to parent" #c>
+   <button (click)="sendMsg(c.value)">Send Message</button>
+   <h4>Message from parent: {{parentData()}}</h4>
+</div>
